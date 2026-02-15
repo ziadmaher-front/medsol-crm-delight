@@ -112,6 +112,10 @@ export function AppSidebar() {
             <span className="text-xs text-sidebar-muted">Admin</span>
           </div>
         </div>
+
+        <p className="mt-3 text-center text-[11px] italic text-sidebar-muted">
+          We deliver value
+        </p>
       </SidebarFooter>
     </Sidebar>
   );

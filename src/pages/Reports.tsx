@@ -59,7 +59,7 @@ export default function Reports() {
               <Tooltip contentStyle={{ borderRadius: "8px", border: "1px solid hsl(214, 20%, 92%)" }} />
               <Legend />
               <Line type="monotone" dataKey="leads" stroke="hsl(210, 80%, 52%)" strokeWidth={2} dot={{ r: 3 }} name="Leads" />
-              <Line type="monotone" dataKey="conversions" stroke="hsl(168, 80%, 36%)" strokeWidth={2} dot={{ r: 3 }} name="Conversions" />
+              <Line type="monotone" dataKey="conversions" stroke="hsl(210, 80%, 52%)" strokeWidth={2} dot={{ r: 3 }} name="Conversions" />
               <Line type="monotone" dataKey="revenue" stroke="hsl(38, 92%, 50%)" strokeWidth={2} dot={{ r: 3 }} name="Revenue ($k)" />
             </LineChart>
           </ResponsiveContainer>
