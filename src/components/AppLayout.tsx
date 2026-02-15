@@ -37,6 +37,9 @@ export function AppLayout({ children, title }: AppLayoutProps) {
             </div>
           </header>
           <main className="flex-1 overflow-auto p-6">{children}</main>
+          <footer className="border-t bg-card px-6 py-3 text-center text-xs italic text-muted-foreground">
+            We deliver value
+          </footer>
         </div>
       </div>
     </SidebarProvider>

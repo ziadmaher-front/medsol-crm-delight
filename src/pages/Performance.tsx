@@ -25,7 +25,7 @@ const barData = [
 const pieData = [
   { name: "Prospecting", value: 20, color: "hsl(210, 80%, 52%)" },
   { name: "Qualification", value: 30, color: "hsl(38, 92%, 50%)" },
-  { name: "Proposal", value: 25, color: "hsl(168, 80%, 36%)" },
+  { name: "Proposal", value: 25, color: "hsl(210, 80%, 52%)" },
   { name: "Negotiation", value: 15, color: "hsl(280, 60%, 55%)" },
   { name: "Closed", value: 10, color: "hsl(152, 60%, 45%)" },
 ];
@@ -95,7 +95,7 @@ export default function Performance() {
                   contentStyle={{ borderRadius: "8px", border: "1px solid hsl(214, 20%, 92%)" }}
                   formatter={(value: number) => [`$${value.toLocaleString()}`, "Revenue"]}
                 />
-                <Bar dataKey="revenue" fill="hsl(168, 80%, 36%)" radius={[0, 4, 4, 0]} barSize={20} />
+                <Bar dataKey="revenue" fill="hsl(210, 80%, 52%)" radius={[0, 4, 4, 0]} barSize={20} />
               </BarChart>
             </ResponsiveContainer>
           </div>
