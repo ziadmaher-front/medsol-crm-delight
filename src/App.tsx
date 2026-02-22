@@ -10,6 +10,11 @@ import Pipeline from "./pages/Pipeline";
 import Performance from "./pages/Performance";
 import Contacts from "./pages/Contacts";
 import UserManagement from "./pages/UserManagement";
+import Leads from "./pages/Leads";
+import Accounts from "./pages/Accounts";
+import Deals from "./pages/Deals";
+import Tasks from "./pages/Tasks";
+import RFQs from "./pages/RFQs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +32,11 @@ const App = () => (
           <Route path="/pipeline" element={<Pipeline />} />
           <Route path="/performance" element={<Performance />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/leads" element={<Leads />} />
+          <Route path="/accounts" element={<Accounts />} />
+          <Route path="/deals" element={<Deals />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/rfqs" element={<RFQs />} />
           <Route path="/users" element={<UserManagement />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
