@@ -1,5 +1,10 @@
+import { useState } from "react";
 import { AppLayout } from "@/components/AppLayout";
 import { Calendar, Clock, Phone, Mail, Video, MapPin } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 const stats = [
   { label: "Total Activities", value: "34", sub: "This week" },
@@ -32,6 +37,8 @@ const typeColors: Record<string, string> = {
 };
 
 export default function Activities() {
+  const [open, setOpen] = useState(false);
+
   return (
     <AppLayout title="Activities">
       <div className="space-y-6">
@@ -39,9 +46,88 @@ export default function Activities() {
           <div>
             <p className="text-sm text-muted-foreground">Manage your activities and schedule</p>
           </div>
-          <button className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
-            + New Activity
-          </button>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger asChild>
+              <button className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+                + New Activity
+              </button>
+            </DialogTrigger>
+            <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle>Create New Activity</DialogTitle>
+              </DialogHeader>
+              <div className="mt-4 space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Activity Type *</Label>
+                    <select className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
+                      <option value="">Select type</option>
+                      <option value="Call">Call</option>
+                      <option value="Email">Email</option>
+                      <option value="Meeting">Meeting</option>
+                      <option value="Visit">Visit</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Status *</Label>
+                    <select className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
+                      <option value="">Select status</option>
+                      <option value="Scheduled">Scheduled</option>
+                      <option value="Completed">Completed</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Cancelled">Cancelled</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label>Subject *</Label>
+                  <Input placeholder="Activity subject" />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Meeting Date & Time *</Label>
+                    <Input type="datetime-local" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Duration *</Label>
+                    <Input type="datetime-local" placeholder="End time" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label>Outcome</Label>
+                  <Input placeholder="Outcome (optional)" />
+                </div>
+                <div className="space-y-2">
+                  <Label>Description</Label>
+                  <Textarea placeholder="Description" />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Lead ID</Label>
+                    <Input placeholder="Lead UUID" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Contact ID</Label>
+                    <Input placeholder="Contact UUID" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Deal ID</Label>
+                    <Input placeholder="Deal UUID" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Account ID</Label>
+                    <Input placeholder="Account UUID" />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 flex justify-end gap-3">
+                <button onClick={() => setOpen(false)} className="rounded-lg border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors">Cancel</button>
+                <button className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">Create Activity</button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

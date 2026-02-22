@@ -9,6 +9,11 @@ import {
   LayoutDashboard,
   UserCog,
   LogOut,
+  Building2,
+  DollarSign,
+  CheckCircle2,
+  FileText,
+  Contact,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import {
@@ -25,11 +30,16 @@ import {
 
 const mainNav = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Reports & Analytics", url: "/reports", icon: BarChart3 },
+  { title: "Leads", url: "/leads", icon: Target },
+  { title: "Accounts", url: "/accounts", icon: Building2 },
+  { title: "Contacts", url: "/contacts", icon: Contact },
+  { title: "Deals", url: "/deals", icon: DollarSign },
   { title: "Activities", url: "/activities", icon: Calendar },
-  { title: "Lead Pipeline", url: "/pipeline", icon: Target },
+  { title: "Tasks", url: "/tasks", icon: CheckCircle2 },
+  { title: "RFQs", url: "/rfqs", icon: FileText },
+  { title: "Lead Pipeline", url: "/pipeline", icon: TrendingUp },
+  { title: "Reports & Analytics", url: "/reports", icon: BarChart3 },
   { title: "Performance", url: "/performance", icon: TrendingUp },
-  { title: "Contacts", url: "/contacts", icon: Users },
   { title: "User Management", url: "/users", icon: UserCog },
 ];
 
