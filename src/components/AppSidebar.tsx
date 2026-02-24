@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BarChart3,
   Users,
@@ -14,9 +15,13 @@ import {
   CheckCircle2,
   FileText,
   Contact,
+  ChevronDown,
+  Zap,
+  LineChart,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -38,17 +43,54 @@ const mainNav = [
   { title: "Activities", url: "/activities", icon: Calendar },
   { title: "Tasks", url: "/tasks", icon: CheckCircle2 },
   { title: "RFQs", url: "/rfqs", icon: FileText },
+  { title: "User Management", url: "/users", icon: UserCog },
+];
+
+const automationNav = [
   { title: "Workflow Rules", url: "/workflow", icon: TrendingUp },
   { title: "Blueprint", url: "/blueprint", icon: Target },
+];
+
+const insightsNav = [
   { title: "Reports & Analytics", url: "/reports", icon: BarChart3 },
-  { title: "Performance", url: "/performance", icon: TrendingUp },
-  { title: "User Management", url: "/users", icon: UserCog },
+  { title: "Performance", url: "/performance", icon: LineChart },
 ];
 
 const bottomNav = [
   { title: "Settings", url: "/settings", icon: Settings },
   { title: "Help Center", url: "/help", icon: HelpCircle },
 ];
+
+function CollapsibleGroup({ label, icon: Icon, items }: { label: string; icon: React.ElementType; items: typeof automationNav }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <Collapsible open={open} onOpenChange={setOpen} className="mt-1">
+      <CollapsibleTrigger className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
+        <Icon className="h-4 w-4 shrink-0" />
+        <span className="flex-1 text-left">{label}</span>
+        <ChevronDown className={`h-3.5 w-3.5 shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <SidebarMenu className="ml-4 border-l border-sidebar-accent pl-2 mt-0.5">
+          {items.map((item) => (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton asChild className="h-8">
+                <NavLink
+                  to={item.url}
+                  className="flex items-center gap-3 rounded-lg px-3 py-1.5 text-sm text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                  activeClassName="bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary hover:text-sidebar-primary-foreground"
+                >
+                  <item.icon className="h-3.5 w-3.5 shrink-0" />
+                  <span>{item.title}</span>
+                </NavLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
 
 export function AppSidebar() {
   return (
@@ -86,6 +128,12 @@ export function AppSidebar() {
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
+
+              {/* Automation collapsible */}
+              <CollapsibleGroup label="Automation" icon={Zap} items={automationNav} />
+
+              {/* Insights collapsible */}
+              <CollapsibleGroup label="Insights" icon={LineChart} items={insightsNav} />
             </SidebarGroupContent>
           </SidebarGroup>
         </ScrollArea>
