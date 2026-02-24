@@ -6,8 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Reports from "./pages/Reports";
 import Activities from "./pages/Activities";
-import Pipeline from "./pages/Pipeline";
+import Workflow from "./pages/Workflow";
+import Blueprint from "./pages/Blueprint";
 import Performance from "./pages/Performance";
+import Settings from "./pages/Settings";
+import HelpCenter from "./pages/HelpCenter";
 import Contacts from "./pages/Contacts";
 import UserManagement from "./pages/UserManagement";
 import Leads from "./pages/Leads";
@@ -29,8 +32,11 @@ const App = () => (
           <Route path="/" element={<Dashboard />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/activities" element={<Activities />} />
-          <Route path="/pipeline" element={<Pipeline />} />
+          <Route path="/workflow" element={<Workflow />} />
+          <Route path="/blueprint" element={<Blueprint />} />
           <Route path="/performance" element={<Performance />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/help" element={<HelpCenter />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/leads" element={<Leads />} />
           <Route path="/accounts" element={<Accounts />} />
